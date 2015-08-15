@@ -57,7 +57,9 @@ class CoreDataStackManager {
     
     /**
      * The Persistent Store Coordinator is an object that the Context uses to interact with the underlying file system. Usually
-     * the persistent store coordinator object uses an SQLite database file to save the managed objects. But it is possible to 
+     * the persistent store coordinator object uses an SQLite database file to 
+    
+    the managed objects. But it is possible to
      * configure it to use XML or other formats. 
      *
      * Typically you will construct your persistent store manager exactly like this. It needs two pieces of information in order
@@ -113,7 +115,7 @@ class CoreDataStackManager {
     
     // MARK: - Core Data Saving support
     
-    func saveContext () {
+    func saveContext() {
 
         if let context = self.managedObjectContext {
         

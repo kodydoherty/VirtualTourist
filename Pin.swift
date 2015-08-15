@@ -15,7 +15,7 @@ import MapKit
 class Pin: NSManagedObject {
     @NSManaged var lat : NSNumber
     @NSManaged var long: NSNumber
-    @NSManaged var photos: [Photo]?
+    @NSManaged var photos: NSMutableOrderedSet?
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)

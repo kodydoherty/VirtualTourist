@@ -22,7 +22,6 @@
 		CBAF76E61B7926670036E6FC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76E41B7926670036E6FC /* Model.xcdatamodeld */; };
 		CBAF76E81B792C400036E6FC /* PhotoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76E71B792C400036E6FC /* PhotoClient.swift */; };
 		CBAF76EA1B792C590036E6FC /* PhotoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76E91B792C590036E6FC /* PhotoConstants.swift */; };
-		CBAF76EC1B792C6C0036E6FC /* PhotoConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76EB1B792C6C0036E6FC /* PhotoConvenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +54,6 @@
 		CBAF76E51B7926670036E6FC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		CBAF76E71B792C400036E6FC /* PhotoClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoClient.swift; sourceTree = "<group>"; };
 		CBAF76E91B792C590036E6FC /* PhotoConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoConstants.swift; sourceTree = "<group>"; };
-		CBAF76EB1B792C6C0036E6FC /* PhotoConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoConvenience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +80,6 @@
 				CB65CDBF1B7D5DBC00D3F1C9 /* PhotoCell.swift */,
 				CBAF76E71B792C400036E6FC /* PhotoClient.swift */,
 				CB65CDBD1B7C09B500D3F1C9 /* ImageCache.swift */,
-				CBAF76EB1B792C6C0036E6FC /* PhotoConvenience.swift */,
 				CBAF76E91B792C590036E6FC /* PhotoConstants.swift */,
 				CBAF76E01B7923CE0036E6FC /* Pin.swift */,
 				CBAF76DE1B7923C30036E6FC /* Photo.swift */,
@@ -253,7 +250,6 @@
 				CB65CDBE1B7C09B500D3F1C9 /* ImageCache.swift in Sources */,
 				CBAF76E11B7923CE0036E6FC /* Pin.swift in Sources */,
 				CBAF76DF1B7923C30036E6FC /* Photo.swift in Sources */,
-				CBAF76EC1B792C6C0036E6FC /* PhotoConvenience.swift in Sources */,
 				CB65CDC01B7D5DBC00D3F1C9 /* PhotoCell.swift in Sources */,
 				CBAF76EA1B792C590036E6FC /* PhotoConstants.swift in Sources */,
 				CBAF76BF1B79238E0036E6FC /* ViewController.swift in Sources */,

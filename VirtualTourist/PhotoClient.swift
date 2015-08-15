@@ -39,15 +39,12 @@ class PhotoClient:NSObject {
         let url = NSURL(string: urlString)!
         let request = NSURLRequest(URL: url)
         
-        println(url)
-        
         let task = session.dataTaskWithRequest(request) {data, response, downloadError in
             
             if let error = downloadError {
 //                let newError = PhotoClient.errorForData(data, response: response, error: error)
                 completionHandler(result: nil, error: downloadError)
             } else {
-                println("Step 3 - taskForResource's completionHandler is invoked.")
                 PhotoClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
             }
         }
@@ -68,7 +65,6 @@ class PhotoClient:NSObject {
         if let error = parsingError {
             completionHandler(result: nil, error: error)
         } else {
-            println("Step 4 - parseJSONWithCompletionHandler is invoked.")
             completionHandler(result: parsedResult, error: nil)
         }
     }

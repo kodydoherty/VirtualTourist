@@ -41,12 +41,26 @@ class ViewController: UIViewController, MKMapViewDelegate{
     }
     
     func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
-        println((view.annotation as! MKPointAnnotation))
-        println("test")
-//        let pin = Pin(
+        let ant = view.annotation as! MKPointAnnotation
         var photoAlbumVC = storyboard?.instantiateViewControllerWithIdentifier("PhotoAlbumVC") as! PhotoAlbumViewController
-//        photoAlbumVC.mapPin  =
-         presentViewController(photoAlbumVC, animated: true, completion: nil)
+        let error:NSErrorPointer = nil
+        
+        let fetchRequest = NSFetchRequest(entityName: "Pin")
+        let firstPredicate = NSPredicate(format: "lat == %@", ant.coordinate.latitude)
+        let SecondPredicate = NSPredicate(format: "long == %@",ant.coordinate.longitude)
+        let predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [firstPredicate, SecondPredicate])
+        
+        fetchRequest.predicate = predicate
+        
+        let results = sharedContext.executeFetchRequest(fetchRequest, error: error)
+        println(results)
+        
+        if error != nil {
+            println("Error in fetchpin():\(error)")
+        }
+    
+//        photoAlbumVC.mapPin = 
+        presentViewController(photoAlbumVC, animated: true, completion: nil)
     }
     
     func action(gestureRecognizer:UIGestureRecognizer){
@@ -56,7 +70,7 @@ class ViewController: UIViewController, MKMapViewDelegate{
         annotation.coordinate = newCoordinates
         mapView.addAnnotation(annotation)
         
-        let mapPin = Pin(location: newCoordinates, context: sharedContext)
+        let mapPin = Pin(location: newCoordinates, context: self.sharedContext)
         let parameters :[String:AnyObject] = ["lat":"\(mapPin.lat)", "lon":"\(mapPin.long)"]
         PhotoClient.sharedInstance().GetResource(parameters) { [unowned self] jsonResult, error in
             
@@ -70,15 +84,21 @@ class ViewController: UIViewController, MKMapViewDelegate{
             if let photosDictionaries = jsonResult.valueForKey("photos") as? [String : AnyObject] {
                 if let photoDictionary = photosDictionaries["photo"] as? [[String : AnyObject]] {
                     var photos = photoDictionary.map() {
-                        Photo(pin: mapPin, dictionary: $0, context: self.sharedContext)
+                      Photo(pin: mapPin, dictionary: $0, context: self.sharedContext)
                     }
-                    mapPin.photos = photos
-                    println(mapPin)
+                    var error:NSError? = nil
+                    
+                    self.sharedContext.save(&error)
+            
+                    
+                    if let error = error {
+                        println("error saving context: \(error.localizedDescription)")
+                    }
                 }
             }
         }
-    
-        insertNewObject(mapPin)
+       
+     
     }
     
     func insertNewObject(pin:Pin) {

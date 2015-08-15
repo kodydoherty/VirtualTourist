@@ -38,12 +38,5 @@ extension PhotoClient {
         static let id = "id"
         static let secret = "secret"
         
-//        static let mediaURL = "mediaURL"
-//        static let latitude = "latitude"
-//        static let longitude = "longitude"
-//        static let createdAt = "createdAt"
-//        static let updatedAt = "updatedAt"
-//        static let StatusMessage = "status_message"
-//        static let StatusCode = "status_code"
     }
 }

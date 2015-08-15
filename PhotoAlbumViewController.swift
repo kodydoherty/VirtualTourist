@@ -10,20 +10,21 @@ import UIKit
 import MapKit
 
 
-class PhotoAlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class PhotoAlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var map: MKMapView!
 
 
     @IBOutlet weak var album: UICollectionView!
     
-    var mapPin: MKPointAnnotation?
+    var mapPin: Pin?
     
     var photos = [Photo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println(mapPin)
     }
     
     // MARK: - UICollectionView
