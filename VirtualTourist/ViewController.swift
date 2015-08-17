@@ -22,10 +22,10 @@ class ViewController: UIViewController, MKMapViewDelegate{
         super.viewDidLoad()
         var gensture: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "action:")
         
-        gensture.minimumPressDuration = 1.0
+        gensture.minimumPressDuration = 1.5
         self.mapView.addGestureRecognizer(gensture)
         
-        mapPins = fetchAllPins()
+        fetchAllPins()
         
     }
     
@@ -46,20 +46,23 @@ class ViewController: UIViewController, MKMapViewDelegate{
         let error:NSErrorPointer = nil
         
         let fetchRequest = NSFetchRequest(entityName: "Pin")
-        let firstPredicate = NSPredicate(format: "lat == %@", ant.coordinate.latitude)
-        let SecondPredicate = NSPredicate(format: "long == %@",ant.coordinate.longitude)
+        let firstPredicate = NSPredicate(format: "lat == %@", NSNumber(double: ant.coordinate.latitude))
+        let SecondPredicate = NSPredicate(format: "long == %@",NSNumber(double: ant.coordinate.longitude))
         let predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [firstPredicate, SecondPredicate])
         
         fetchRequest.predicate = predicate
         
         let results = sharedContext.executeFetchRequest(fetchRequest, error: error)
-        println(results)
+
+        
+        let pin = results as! [Pin]
+        
+        photoAlbumVC.mapPin = pin[0]
         
         if error != nil {
             println("Error in fetchpin():\(error)")
         }
-    
-//        photoAlbumVC.mapPin = 
+        
         presentViewController(photoAlbumVC, animated: true, completion: nil)
     }
     
@@ -86,10 +89,11 @@ class ViewController: UIViewController, MKMapViewDelegate{
                     var photos = photoDictionary.map() {
                       Photo(pin: mapPin, dictionary: $0, context: self.sharedContext)
                     }
+                    
+                    
                     var error:NSError? = nil
                     
                     self.sharedContext.save(&error)
-            
                     
                     if let error = error {
                         println("error saving context: \(error.localizedDescription)")
@@ -97,37 +101,29 @@ class ViewController: UIViewController, MKMapViewDelegate{
                 }
             }
         }
-       
-     
     }
     
-    func insertNewObject(pin:Pin) {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.mapPins.append(pin)
-        
-            var error:NSError? = nil
-            
-            self.sharedContext.save(&error)
-            
-            if let error = error {
-                println("error saving context: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    // Step 2: Add a fetchAllEvents() method
-    // (See the fetchAllActors() method in FavoriteActorViewController for an example
-    func fetchAllPins() -> [Pin] {
+    func fetchAllPins()  {
         let error:NSErrorPointer = nil
         
         let fetchRequest = NSFetchRequest(entityName: "Pin")
         
-        let results = sharedContext.executeFetchRequest(fetchRequest, error: error)
+        let results = sharedContext.executeFetchRequest(fetchRequest, error: error) as! [Pin]
         
         if error != nil {
             println("Error in fetchAllPins():\(error)")
         }
-        return results as! [Pin]
+        
+        for pin in results {
+            let annotation = MKPointAnnotation()
+            
+            let core = CLLocationCoordinate2D(latitude: Double(pin.lat), longitude: Double(pin.long))
+        
+            annotation.coordinate = core
+            mapView.addAnnotation(annotation)
+        }
+        
+        
     }
     
     
@@ -138,6 +134,7 @@ class ViewController: UIViewController, MKMapViewDelegate{
         alertView.addButtonWithTitle("Ok")
         alertView.show()
     }
+    
     
     
 }

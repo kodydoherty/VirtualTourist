@@ -26,7 +26,13 @@ class Photo :NSManagedObject {
         let entity = NSEntityDescription.entityForName("Photo", inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         self.pin = pin
-        self.imagePath = dictionary["id"] as! String
+       
+        var farm = dictionary["farm"] as! Int
+        var server = dictionary["server"] as! String
+        var id = dictionary["id"] as! String
+        var secret = dictionary["secret"] as! String
+        var url = "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg"
+        self.imagePath = url
     }
     
     var locationImage: UIImage? {
