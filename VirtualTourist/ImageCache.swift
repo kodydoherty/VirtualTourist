@@ -31,6 +31,9 @@ class ImageCache {
         
         // Next Try the hard drive
         if let data = NSData(contentsOfFile: path) {
+            println("get image")
+            println(data)
+            println(path)
             return UIImage(data: data)
         }
         
@@ -51,11 +54,13 @@ class ImageCache {
         
         // Otherwise, keep the image in memory
         inMemoryCache.setObject(image!, forKey: path)
-        
+
         // And in documents directory
+
         let data = UIImagePNGRepresentation(image!)
         data.writeToFile(path, atomically: true)
-    }
+        println(path)
+  }
     
     
     func pathForIdentifier(identifier: String) -> String {

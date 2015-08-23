@@ -45,9 +45,6 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         let centerx = mapView.region.center.latitude
         let centery = mapView.region.center.longitude
         
-        
-        mapView.
-        
         // set defaults for the current map view locaiton
         NSUserDefaults.standardUserDefaults().setDouble(lat, forKey: "lat")
         NSUserDefaults.standardUserDefaults().setDouble(lat, forKey: "long")
