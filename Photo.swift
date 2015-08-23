@@ -15,6 +15,7 @@ import UIKit
 class Photo :NSManagedObject {
     
     @NSManaged var imagePath: String
+    @NSManaged var imageID: String
     @NSManaged var pin: Pin
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
@@ -31,16 +32,17 @@ class Photo :NSManagedObject {
         var secret = dictionary["secret"] as! String
         var url = "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg"
         self.imagePath = url
+        self.imageID = id
     }
     
     var locationImage: UIImage? {
         
         get {
-            return PhotoClient.Caches.imageCache.imageWithIdentifier(imagePath)
+            return PhotoClient.Caches.imageCache.imageWithIdentifier("\(imageID).png")
         }
         
         set {
-            PhotoClient.Caches.imageCache.storeImage(newValue, withIdentifier: imagePath)
+            PhotoClient.Caches.imageCache.storeImage(newValue, withIdentifier: "\(imageID).png")
         }
     }
     

@@ -31,9 +31,6 @@ class ImageCache {
         
         // Next Try the hard drive
         if let data = NSData(contentsOfFile: path) {
-            println("get image")
-            println(data)
-            println(path)
             return UIImage(data: data)
         }
         
@@ -59,7 +56,7 @@ class ImageCache {
 
         let data = UIImagePNGRepresentation(image!)
         data.writeToFile(path, atomically: true)
-        println(path)
+
   }
     
     
