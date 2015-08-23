@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -75,7 +75,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkk-DM-oS5">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="New Collection">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -140,12 +140,12 @@
                                                 <exclude reference="MYz-FS-lc5"/>
                                             </mask>
                                             <mask key="constraints">
+                                                <exclude reference="EtD-ul-c3S"/>
+                                                <exclude reference="sNe-c0-WKD"/>
                                                 <exclude reference="4T1-MR-kAY"/>
                                                 <exclude reference="Bqs-2M-bRL"/>
                                                 <exclude reference="Wge-aC-Ztg"/>
                                                 <exclude reference="wXH-6h-X1d"/>
-                                                <exclude reference="EtD-ul-c3S"/>
-                                                <exclude reference="sNe-c0-WKD"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
@@ -154,12 +154,12 @@
                                                 <include reference="MYz-FS-lc5"/>
                                             </mask>
                                             <mask key="constraints">
+                                                <include reference="EtD-ul-c3S"/>
+                                                <include reference="sNe-c0-WKD"/>
                                                 <include reference="4T1-MR-kAY"/>
                                                 <include reference="Bqs-2M-bRL"/>
                                                 <include reference="Wge-aC-Ztg"/>
                                                 <include reference="wXH-6h-X1d"/>
-                                                <include reference="EtD-ul-c3S"/>
-                                                <include reference="sNe-c0-WKD"/>
                                             </mask>
                                         </variation>
                                         <connections>
@@ -199,6 +199,11 @@
                                 <exclude reference="R7F-s4-4tG"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="a9v-bs-dRm"/>
+                                <exclude reference="5l3-HW-W5B"/>
+                                <exclude reference="7ZZ-kv-hMp"/>
+                                <exclude reference="Sii-Vh-Gce"/>
+                                <exclude reference="rjf-P4-SAl"/>
                                 <exclude reference="cZO-oJ-zLX"/>
                                 <exclude reference="eTF-pu-WrJ"/>
                                 <exclude reference="wxb-Cs-6Hk"/>
@@ -208,11 +213,6 @@
                                 <exclude reference="Cyk-3y-A5c"/>
                                 <exclude reference="n5m-Zd-kUi"/>
                                 <exclude reference="wrr-x8-pCn"/>
-                                <exclude reference="5l3-HW-W5B"/>
-                                <exclude reference="7ZZ-kv-hMp"/>
-                                <exclude reference="Sii-Vh-Gce"/>
-                                <exclude reference="rjf-P4-SAl"/>
-                                <exclude reference="a9v-bs-dRm"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -223,6 +223,11 @@
                                 <include reference="R7F-s4-4tG"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="a9v-bs-dRm"/>
+                                <include reference="5l3-HW-W5B"/>
+                                <include reference="7ZZ-kv-hMp"/>
+                                <include reference="Sii-Vh-Gce"/>
+                                <include reference="rjf-P4-SAl"/>
                                 <include reference="cZO-oJ-zLX"/>
                                 <include reference="eTF-pu-WrJ"/>
                                 <include reference="wxb-Cs-6Hk"/>
@@ -232,11 +237,6 @@
                                 <include reference="Cyk-3y-A5c"/>
                                 <include reference="n5m-Zd-kUi"/>
                                 <include reference="wrr-x8-pCn"/>
-                                <include reference="5l3-HW-W5B"/>
-                                <include reference="7ZZ-kv-hMp"/>
-                                <include reference="Sii-Vh-Gce"/>
-                                <include reference="rjf-P4-SAl"/>
-                                <include reference="a9v-bs-dRm"/>
                             </mask>
                         </variation>
                     </view>

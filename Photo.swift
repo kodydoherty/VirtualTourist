@@ -21,12 +21,10 @@ class Photo :NSManagedObject {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
-    
     init(pin: Pin, dictionary: [String : AnyObject], context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entityForName("Photo", inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         self.pin = pin
-       
         var farm = dictionary["farm"] as! Int
         var server = dictionary["server"] as! String
         var id = dictionary["id"] as! String
@@ -44,6 +42,15 @@ class Photo :NSManagedObject {
         set {
             PhotoClient.Caches.imageCache.storeImage(newValue, withIdentifier: imagePath)
         }
+    }
+    
+    //Delete the associated image file when the Photo managed object is deleted.
+    override func prepareForDeletion() {
+        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        let pathArray = [dirPath, imagePath]
+        let fileURL = NSURL.fileURLWithPathComponents(pathArray)!
+        NSFileManager.defaultManager().removeItemAtURL(fileURL, error: nil)
+
     }
     
 }

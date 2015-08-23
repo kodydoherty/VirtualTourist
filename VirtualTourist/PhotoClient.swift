@@ -19,18 +19,21 @@ class PhotoClient:NSObject {
         super.init()
     }
     
-    // MARK: - All purpose task method for data
-    
+    // MARK: - Main Get method for flickr
     func GetResource(parameters: [String : AnyObject], completionHandler: CompletionHander) -> NSURLSessionDataTask {
         
         var mutableParameters = parameters
         
-        // Add in the API Key
+        // Add in the API Key and set paramaters
         mutableParameters["method"] = Methods.FlickrMethod
         mutableParameters["api_key"] = Constants.ApiKey
         mutableParameters["accuracy"] = Methods.Accuracy
         mutableParameters["lat"] = parameters["lat"] as! String
         mutableParameters["lon"] = parameters["lon"] as! String
+        mutableParameters["per_page"] = Methods.PhotoLimit
+        if let pageNumber = parameters["page"] as? String {
+            mutableParameters["page"] = pageNumber
+        }
         mutableParameters["format"] = Methods.Format
         mutableParameters["nojsoncallback"] = Methods.Nojsoncallback
         
@@ -42,7 +45,6 @@ class PhotoClient:NSObject {
         let task = session.dataTaskWithRequest(request) {data, response, downloadError in
             
             if let error = downloadError {
-//                let newError = PhotoClient.errorForData(data, response: response, error: error)
                 completionHandler(result: nil, error: downloadError)
             } else {
                 PhotoClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
@@ -56,7 +58,6 @@ class PhotoClient:NSObject {
 
     
     // Parsing the JSON
-    
     class func parseJSONWithCompletionHandler(data: NSData, completionHandler: CompletionHander) {
         var parsingError: NSError? = nil
         
@@ -70,9 +71,7 @@ class PhotoClient:NSObject {
     }
     
     // URL Encoding a dictionary into a parameter string
-    
     class func escapedParameters(parameters: [String : AnyObject]) -> String {
-        
         var urlVars = [String]()
         
         for (key, value) in parameters {
@@ -90,54 +89,18 @@ class PhotoClient:NSObject {
         
         return (!urlVars.isEmpty ? "?" : "") + join("&", urlVars)
     }
-    //Mark: - Error
-    
-//    class func errorForData(data: NSData?, response: NSURLResponse?, error: NSError) -> NSError {
-//        
-//        if let parsedResult = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil) as? [String : AnyObject] {
-//            if let errorMessage = parsedResult[TheMovieDB.Keys.ErrorStatusMessage] as? String {
-//                
-//                let userInfo = [NSLocalizedDescriptionKey : errorMessage]
-//                
-//                return NSError(domain: "TMDB Error", code: 1, userInfo: userInfo)
-//            }
-//        }
-//        
-//        return error
-//    }
-    
     
     // MARK: - Shared Instance
-    
     class func sharedInstance() -> PhotoClient {
         
         struct Singleton {
             static var sharedInstance = PhotoClient()
         }
-        
         return Singleton.sharedInstance
     }
     
-    // MARK: - Shared Date Formatter
-    
-    class var sharedDateFormatter: NSDateFormatter  {
-        
-        struct Singleton {
-            static let dateFormatter = Singleton.generateDateFormatter()
-            
-            static func generateDateFormatter() -> NSDateFormatter {
-                var formatter = NSDateFormatter()
-                formatter.dateFormat = "yyyy-mm-dd"
-                
-                return formatter
-            }
-        }
-        
-        return Singleton.dateFormatter
-    }
     
     // MARK: - Shared Image Cache
-    
     struct Caches {
         static let imageCache = ImageCache()
     }

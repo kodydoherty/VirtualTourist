@@ -19,9 +19,9 @@
 		CBAF76DF1B7923C30036E6FC /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76DE1B7923C30036E6FC /* Photo.swift */; };
 		CBAF76E11B7923CE0036E6FC /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76E01B7923CE0036E6FC /* Pin.swift */; };
 		CBAF76E31B7923DF0036E6FC /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76E21B7923DF0036E6FC /* PhotoAlbumViewController.swift */; };
-		CBAF76E61B7926670036E6FC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76E41B7926670036E6FC /* Model.xcdatamodeld */; };
 		CBAF76E81B792C400036E6FC /* PhotoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76E71B792C400036E6FC /* PhotoClient.swift */; };
 		CBAF76EA1B792C590036E6FC /* PhotoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76E91B792C590036E6FC /* PhotoConstants.swift */; };
+		CBCE00C91B856324001B9853 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBCE00C71B856324001B9853 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,9 +51,9 @@
 		CBAF76DE1B7923C30036E6FC /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Photo.swift; path = ../Photo.swift; sourceTree = "<group>"; };
 		CBAF76E01B7923CE0036E6FC /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pin.swift; path = ../Pin.swift; sourceTree = "<group>"; };
 		CBAF76E21B7923DF0036E6FC /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoAlbumViewController.swift; path = ../PhotoAlbumViewController.swift; sourceTree = "<group>"; };
-		CBAF76E51B7926670036E6FC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		CBAF76E71B792C400036E6FC /* PhotoClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoClient.swift; sourceTree = "<group>"; };
 		CBAF76E91B792C590036E6FC /* PhotoConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoConstants.swift; sourceTree = "<group>"; };
+		CBCE00C81B856324001B9853 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +108,8 @@
 		CBAF76B91B79238E0036E6FC /* VirtualTourist */ = {
 			isa = PBXGroup;
 			children = (
+				CBCE00C71B856324001B9853 /* Model.xcdatamodeld */,
 				CBAF76BE1B79238E0036E6FC /* ViewController.swift */,
-				CBAF76E41B7926670036E6FC /* Model.xcdatamodeld */,
 				CBAF76E21B7923DF0036E6FC /* PhotoAlbumViewController.swift */,
 				CB65CDBC1B7C08F300D3F1C9 /* ThePhotoDB */,
 				CBAF76DC1B7923AD0036E6FC /* CoreDataStackManager.swift */,
@@ -253,10 +253,10 @@
 				CB65CDC01B7D5DBC00D3F1C9 /* PhotoCell.swift in Sources */,
 				CBAF76EA1B792C590036E6FC /* PhotoConstants.swift in Sources */,
 				CBAF76BF1B79238E0036E6FC /* ViewController.swift in Sources */,
-				CBAF76E61B7926670036E6FC /* Model.xcdatamodeld in Sources */,
 				CBAF76BD1B79238E0036E6FC /* AppDelegate.swift in Sources */,
 				CBAF76E81B792C400036E6FC /* PhotoClient.swift in Sources */,
 				CBAF76DD1B7923AD0036E6FC /* CoreDataStackManager.swift in Sources */,
+				CBCE00C91B856324001B9853 /* Model.xcdatamodeld in Sources */,
 				CBAF76E31B7923DF0036E6FC /* PhotoAlbumViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,12 +467,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CBAF76E41B7926670036E6FC /* Model.xcdatamodeld */ = {
+		CBCE00C71B856324001B9853 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CBAF76E51B7926670036E6FC /* Model.xcdatamodel */,
+				CBCE00C81B856324001B9853 /* Model.xcdatamodel */,
 			);
-			currentVersion = CBAF76E51B7926670036E6FC /* Model.xcdatamodel */;
+			currentVersion = CBCE00C81B856324001B9853 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

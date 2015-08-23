@@ -16,16 +16,17 @@ class Pin: NSManagedObject {
     @NSManaged var lat : NSNumber
     @NSManaged var long: NSNumber
     @NSManaged var photos: NSMutableOrderedSet?
+    @NSManaged var pages: NSNumber?
+    @NSManaged var page: NSNumber?
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
-    
+
     init(location:CLLocationCoordinate2D, context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entityForName("Pin", inManagedObjectContext: context)!
         
         super.init(entity: entity, insertIntoManagedObjectContext: context)
-        
         lat = location.latitude as Double
         long = location.longitude as Double
 

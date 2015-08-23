@@ -9,9 +9,8 @@
 import Foundation
 
 extension PhotoClient {
-    //    // MARK: - Constants
+    // MARK: - Constants
     struct Constants {
-        
         // MARK: API Key
         static let ApiKey : String = "982f17eedba934b9c72f538c01c8aa8c"
         static let ApiSecret : String = "909f0a4f02b7ba68"
@@ -28,6 +27,7 @@ extension PhotoClient {
         static let Nojsoncallback = "nojsoncallback"
         static let FlickrMethod = "flickr.photos.search"
         static let Format = "json"
+        static let PhotoLimit = "21"
         
     }
     
