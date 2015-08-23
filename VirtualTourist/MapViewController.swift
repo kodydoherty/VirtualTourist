@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreData
 
-class ViewController: UIViewController, MKMapViewDelegate{
+class MapViewController: UIViewController, MKMapViewDelegate{
     // IBOutlets
     @IBOutlet weak var mapView: MKMapView!
     // instants variables
@@ -44,6 +44,9 @@ class ViewController: UIViewController, MKMapViewDelegate{
         // Find map view current center locaiton
         let centerx = mapView.region.center.latitude
         let centery = mapView.region.center.longitude
+        
+        
+        mapView.
         
         // set defaults for the current map view locaiton
         NSUserDefaults.standardUserDefaults().setDouble(lat, forKey: "lat")

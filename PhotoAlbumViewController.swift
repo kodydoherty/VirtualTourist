@@ -37,9 +37,6 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     // MARK: - UICollectionView
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
@@ -52,33 +49,34 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDataSource, UI
         cell.activityView.hidesWhenStopped = true
         
         var photo = photos[indexPath.row]
-        
+
         if photo.locationImage != nil {
-            cell.image.image = photos[indexPath.row].locationImage
+            cell.image.image = photo.locationImage
         } else {
-        
-                cell.image.image = UIImage(named: "DefaultPhoto")
-                cell.activityView.startAnimating()
-                dispatch_async(dispatch_get_main_queue()) {
-                    //get image
-                    let imageURL = NSURL(string: photo.imagePath)
-                    let imageData = NSData(contentsOfURL: imageURL!)
-                    let pic = UIImage(data: imageData!)
-            
-                    cell.activityView.stopAnimating()
-                    cell.image.image = pic
-                    photo.locationImage = pic
-            
-                    // save in core data
-                    var error:NSError? = nil
-                    self.sharedContext.save(&error)
-            
-                    if let error = error {
-                        println("error saving context: \(error.localizedDescription)")
-                        self.alert("Error saving image")
-                    }
+            cell.image.image = UIImage(named: "DefaultPhoto")
+            cell.activityView.startAnimating()
+            dispatch_async(dispatch_get_main_queue()) {
+                //get image
+                let imageURL = NSURL(string: photo.imagePath)
+                let imageData = NSData(contentsOfURL: imageURL!)
+                let pic = UIImage(data: imageData!)
+                
+                cell.activityView.stopAnimating()
+                cell.image.image = pic
+                photo.locationImage = pic
+                
+                // save in core data
+                var error:NSError? = nil
+                self.sharedContext.save(&error)
+                
+                if let error = error {
+                    println("error saving context: \(error.localizedDescription)")
+                    self.alert("Error saving image")
                 }
+                
+                
             }
+        }
         
         return cell
     }

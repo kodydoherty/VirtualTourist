@@ -10,7 +10,7 @@
 		CB65CDBE1B7C09B500D3F1C9 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB65CDBD1B7C09B500D3F1C9 /* ImageCache.swift */; };
 		CB65CDC01B7D5DBC00D3F1C9 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB65CDBF1B7D5DBC00D3F1C9 /* PhotoCell.swift */; };
 		CBAF76BD1B79238E0036E6FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76BC1B79238E0036E6FC /* AppDelegate.swift */; };
-		CBAF76BF1B79238E0036E6FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76BE1B79238E0036E6FC /* ViewController.swift */; };
+		CBAF76BF1B79238E0036E6FC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF76BE1B79238E0036E6FC /* MapViewController.swift */; };
 		CBAF76C21B79238E0036E6FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBAF76C01B79238E0036E6FC /* Main.storyboard */; };
 		CBAF76C41B79238E0036E6FC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBAF76C31B79238E0036E6FC /* Images.xcassets */; };
 		CBAF76C71B79238E0036E6FC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAF76C51B79238E0036E6FC /* LaunchScreen.xib */; };
@@ -40,7 +40,7 @@
 		CBAF76B71B79238E0036E6FC /* VirtualTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBAF76BB1B79238E0036E6FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBAF76BC1B79238E0036E6FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CBAF76BE1B79238E0036E6FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CBAF76BE1B79238E0036E6FC /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CBAF76C11B79238E0036E6FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CBAF76C31B79238E0036E6FC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CBAF76C61B79238E0036E6FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				CBCE00C71B856324001B9853 /* Model.xcdatamodeld */,
-				CBAF76BE1B79238E0036E6FC /* ViewController.swift */,
+				CBAF76BE1B79238E0036E6FC /* MapViewController.swift */,
 				CBAF76E21B7923DF0036E6FC /* PhotoAlbumViewController.swift */,
 				CB65CDBC1B7C08F300D3F1C9 /* ThePhotoDB */,
 				CBAF76DC1B7923AD0036E6FC /* CoreDataStackManager.swift */,
@@ -252,7 +252,7 @@
 				CBAF76DF1B7923C30036E6FC /* Photo.swift in Sources */,
 				CB65CDC01B7D5DBC00D3F1C9 /* PhotoCell.swift in Sources */,
 				CBAF76EA1B792C590036E6FC /* PhotoConstants.swift in Sources */,
-				CBAF76BF1B79238E0036E6FC /* ViewController.swift in Sources */,
+				CBAF76BF1B79238E0036E6FC /* MapViewController.swift in Sources */,
 				CBAF76BD1B79238E0036E6FC /* AppDelegate.swift in Sources */,
 				CBAF76E81B792C400036E6FC /* PhotoClient.swift in Sources */,
 				CBAF76DD1B7923AD0036E6FC /* CoreDataStackManager.swift in Sources */,
