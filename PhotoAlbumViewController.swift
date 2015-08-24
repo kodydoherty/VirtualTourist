@@ -57,7 +57,7 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDataSource, UI
             cell.activityView.startAnimating()
             dispatch_async(dispatch_get_main_queue()) {
                 //get image
-                let imageURL = NSURL(string: photo.imagePath )
+                let imageURL = NSURL(string: photo.imageURL)
                 let imageData = NSData(contentsOfURL: imageURL!)
                 let pic = UIImage(data: imageData!)
                 

@@ -12,7 +12,7 @@ class PhotoClient:NSObject {
    
     typealias CompletionHander = (result: AnyObject!, error: NSError?) -> Void
     
-    var session: NSURLSession
+    private let session: NSURLSession
     
     override init() {
         session = NSURLSession.sharedSession()
@@ -94,7 +94,7 @@ class PhotoClient:NSObject {
     class func sharedInstance() -> PhotoClient {
         
         struct Singleton {
-            static var sharedInstance = PhotoClient()
+            static let sharedInstance = PhotoClient()
         }
         return Singleton.sharedInstance
     }

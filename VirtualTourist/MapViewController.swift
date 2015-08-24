@@ -20,7 +20,6 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         super.viewDidLoad()
         // configure gesture
         var gensture: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "action:")
-        gensture.minimumPressDuration = 1.5
         self.mapView.addGestureRecognizer(gensture)
         
         // set region based on last location
@@ -88,48 +87,50 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     // MARK: - Gesture Reconizer
     // get all of the flickr photos by location
     func action(gestureRecognizer:UIGestureRecognizer){
-        var touchPoint = gestureRecognizer.locationInView(mapView)
-        var newCoordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = newCoordinates
-        mapView.addAnnotation(annotation)
-        let pageNumber:Int = 0
-        let mapPin = Pin(location: newCoordinates, context: self.sharedContext)
-        let parameters :[String:AnyObject] = ["lat":"\(mapPin.lat)", "lon":"\(mapPin.long)"]
-        PhotoClient.sharedInstance().GetResource(parameters) { [unowned self] jsonResult, error in
+        if gestureRecognizer.state == UIGestureRecognizerState.Ended {
+            var touchPoint = gestureRecognizer.locationInView(mapView)
+            var newCoordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = newCoordinates
+            mapView.addAnnotation(annotation)
+            let pageNumber:Int = 0
+            let mapPin = Pin(location: newCoordinates, context: self.sharedContext)
+            let parameters :[String:AnyObject] = ["lat":"\(mapPin.lat)", "lon":"\(mapPin.long)"]
+            PhotoClient.sharedInstance().GetResource(parameters) { [unowned self] jsonResult, error in
             
-            // Handle the error case
-            if let error = error {
-                println("Error searching for flickr photo: \(error.localizedDescription)")
-                self.alert("Error searching for flickr photos ")
-                return
-            }
+                // Handle the error case
+                if let error = error {
+                    println("Error searching for flickr photo: \(error.localizedDescription)")
+                    self.alert("Error searching for flickr photos ")
+                    return
+                }
             
-            // Get a Swift dictionary from the JSON data
-            if let photosDictionaries = jsonResult.valueForKey("photos") as? [String : AnyObject] {
+                // Get a Swift dictionary from the JSON data
+                if let photosDictionaries = jsonResult.valueForKey("photos") as? [String : AnyObject] {
                 
-                // get total pages
-                if let maxPages = photosDictionaries["pages"] as? NSNumber {
-                    mapPin.pages = maxPages
-                }
-                
-                // get current page number
-                if let pageNumber = photosDictionaries["page"] as? NSNumber {
-                    mapPin.page = pageNumber
-                }
-                if let photoDictionary = photosDictionaries["photo"] as? [[String : AnyObject]] {
-                    // build Photo array
-                    var photos = photoDictionary.map() {
-                        Photo(pin: mapPin, dictionary: $0, context: self.sharedContext)
+                    // get total pages
+                    if let maxPages = photosDictionaries["pages"] as? NSNumber {
+                        mapPin.pages = maxPages
                     }
+                
+                    // get current page number
+                    if let pageNumber = photosDictionaries["page"] as? NSNumber {
+                        mapPin.page = pageNumber
+                    }
+                    if let photoDictionary = photosDictionaries["photo"] as? [[String : AnyObject]] {
+                        // build Photo array
+                        var photos = photoDictionary.map() {
+                            Photo(pin: mapPin, dictionary: $0, context: self.sharedContext)
+                        }
                     
-                    var error:NSError? = nil
+                        var error:NSError? = nil
                     
-                    self.sharedContext.save(&error)
+                        self.sharedContext.save(&error)
                     
-                    if let error = error {
-                        self.alert("Error saving context")
-                        println("error saving context: \(error.localizedDescription)")
+                        if let error = error {
+                            self.alert("Error saving context")
+                            println("error saving context: \(error.localizedDescription)")
+                        }
                     }
                 }
             }
